@@ -14,10 +14,10 @@ class LinkedList
 
   def append(value)
     if size.zero?
-      self.head = Node.new(value: value)
+      self.head = Node.new(value)
       self.tail = head
     else
-      tail.next_node = Node.new(value: value)
+      tail.next_node = Node.new(value)
       self.tail = tail.next_node
     end
     self.size += 1
