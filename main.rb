@@ -3,4 +3,13 @@
 require_relative 'lib/linked_list'
 
 list = LinkedList.new
-p list
+
+puts list
+
+list.append(1)
+
+puts list
+
+list.append(2)
+
+puts list
