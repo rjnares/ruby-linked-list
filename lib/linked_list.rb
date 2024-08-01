@@ -33,6 +33,20 @@ class LinkedList
     self.size += 1
   end
 
+  def at(index)
+    return nil unless (0...size).include?(index)
+
+    current = head
+    i = 0
+
+    until i == index
+      current = current.next_node
+      i += 1
+    end
+
+    current
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
