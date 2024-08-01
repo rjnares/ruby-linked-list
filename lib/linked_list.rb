@@ -47,6 +47,21 @@ class LinkedList
     current
   end
 
+  def pop
+    return unless size.positive?
+
+    if size == 1
+      self.head = nil
+      self.tail = nil
+    else
+      self.tail = head
+      self.tail = tail.next_node until tail.next_node.next_node.nil?
+      tail.next_node = nil
+    end
+
+    self.size -= 1
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
