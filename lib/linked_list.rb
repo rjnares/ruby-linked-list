@@ -23,6 +23,16 @@ class LinkedList
     self.size += 1
   end
 
+  def prepend(value)
+    if size.zero?
+      self.head = Node.new(value)
+      self.tail = head
+    else
+      self.head = Node.new(value, head)
+    end
+    self.size += 1
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
