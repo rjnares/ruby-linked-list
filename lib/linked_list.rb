@@ -137,10 +137,8 @@ class LinkedList
   def insert_between(value, previous)
     return if previous.nil?
 
-    new_node = Node.new(value, previous.next_node)
-    previous.next_node = new_node
-    self.size += 1
+    previous.next_node = Node.new(value, previous.next_node)
 
-    self.tail = new_node if new_node.next_node.nil?
+    self.size += 1
   end
 end
