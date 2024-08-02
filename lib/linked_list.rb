@@ -84,6 +84,23 @@ class LinkedList
     nil
   end
 
+  def insert_at(value, index)
+    return unless index.between?(0, size)
+    return prepend(value) if index.zero?
+    return append(value) if index == size
+
+    current = head
+    i = 1
+
+    until i == index
+      current = current.next_node
+      i += 1
+    end
+
+    current.next_node = Node.new(value, current.next_node)
+    self.size += 1
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
