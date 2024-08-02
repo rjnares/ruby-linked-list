@@ -72,6 +72,18 @@ class LinkedList
     false
   end
 
+  def find(value)
+    index = 0
+    current = head
+    until current.nil?
+      return index if current.value == value
+
+      current = current.next_node
+      index += 1
+    end
+    nil
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
