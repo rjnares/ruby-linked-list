@@ -48,18 +48,17 @@ class LinkedList
   end
 
   def pop
-    return unless size.positive?
-
     if size == 1
       self.head = nil
       self.tail = nil
-    else
-      self.tail = head
-      self.tail = tail.next_node until tail.next_node.next_node.nil?
-      tail.next_node = nil
+    elsif size > 1
+      new_last_node = head
+      new_last_node = new_last_node.next_node until new_last_node.next_node == tail
+      new_last_node.next_node = nil
+      self.tail = new_last_node
     end
 
-    self.size -= 1
+    decrement_size
   end
 
   def contains?(value)
@@ -132,5 +131,11 @@ class LinkedList
     end
     node_strings[index] = 'nil'
     node_strings.join(' -> ')
+  end
+
+  private
+
+  def decrement_size
+    self.size -= 1 if size.positive?
   end
 end
