@@ -62,6 +62,16 @@ class LinkedList
     self.size -= 1
   end
 
+  def contains?(value)
+    current = head
+    until current.nil?
+      return true if current.value == value
+
+      current = current.next_node
+    end
+    false
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
