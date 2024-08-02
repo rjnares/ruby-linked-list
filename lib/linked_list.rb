@@ -85,19 +85,14 @@ class LinkedList
 
   def insert_at(value, index)
     return unless index.between?(0, size)
-    return prepend(value) if index.zero?
-    return append(value) if index == size
 
-    current = head
-    i = 1
-
-    until i == index
-      current = current.next_node
-      i += 1
+    if index.zero?
+      prepend(value)
+    elsif index == size
+      append(value)
+    else
+      insert_between(value, at(index - 1))
     end
-
-    current.next_node = Node.new(value, current.next_node)
-    self.size += 1
   end
 
   def remove_at(index)
@@ -137,5 +132,15 @@ class LinkedList
 
   def decrement_size
     self.size -= 1 if size.positive?
+  end
+
+  def insert_between(value, previous)
+    return if previous.nil?
+
+    new_node = Node.new(value, previous.next_node)
+    previous.next_node = new_node
+    self.size += 1
+
+    self.tail = new_node if new_node.next_node.nil?
   end
 end
