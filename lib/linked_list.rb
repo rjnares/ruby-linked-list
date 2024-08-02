@@ -101,6 +101,26 @@ class LinkedList
     self.size += 1
   end
 
+  def remove_at(index)
+    return unless (0...size).include?(index)
+    return pop if size == 1
+
+    previous = Node.new(nil, head)
+    i = 0
+
+    until i == index
+      previous = previous.next_node
+      i += 1
+    end
+
+    node_to_remove = previous.next_node
+    previous.next_node = node_to_remove.next_node
+    self.size -= 1
+
+    self.head = node_to_remove.next_node if node_to_remove == head
+    self.tail = previous if node_to_remove == tail
+  end
+
   def to_s
     node_strings = Array.new(size + 1)
     index = 0
